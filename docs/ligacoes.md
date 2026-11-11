@@ -33,14 +33,14 @@ O LCD do Tinkercad usa os nomes GND e VCC no lugar de VSS e VDD.
 
 Os potenciômetros ficam girados 90°, com os pinos na coluna **a**. Os fios saem da coluna **d** da mesma linha.
 
-| Potenciômetro | Linhas | Pino de cima | Pino do meio | Pino de baixo |
-|---|---|---|---|---|
-| Pot 1, tensão | 12, 13, 14 | Trilho + | **A0** | Trilho − |
-| Pot 2, corrente | 17, 18, 19 | Trilho + | **A1** | Trilho − |
-| Pot 3, fator de potência | 22, 23, 24 | Trilho + | **A2** | Trilho − |
-| Pot 4, contraste | 27, 28, 29 | Trilho + | **VO** do LCD | Trilho − |
+| Potenciômetro | Nome no esquema | Linhas | Pino de cima | Pino do meio | Pino de baixo |
+|---|---|---|---|---|---|
+| Pot 1, tensão | `RPOT1_TENSÃO` | 12, 13, 14 | Trilho + | **A0** | Trilho − |
+| Pot 2, corrente | `RPOT2_CORRENTE` | 17, 18, 19 | Trilho + | **A1** | Trilho − |
+| Pot 3, fator de potência | `RPOT3_FATOR_POTÊNCIA` | 22, 23, 24 | Trilho + | **A2** | Trilho − |
+| Pot 4, contraste | `RPOT4_CONTRASTES` | 27, 28, 29 | Trilho + | **VO** do LCD | Trilho − |
 
-Resistor R1 (220 Ω, backlight do LCD): na coluna **a**, linhas 5 a 9. Um fio vermelho sai de **e9** (perna de baixo) até o trilho + da direita; outro fio vermelho sai de **c5** (perna de cima) até o 1º pino "LED" do LCD.
+Resistor `R1_BACKLIGHT` (220 Ω, backlight do LCD): na coluna **a**, linhas 5 a 9. Um fio vermelho sai de **e9** (perna de baixo) até o trilho + da direita; outro fio vermelho sai de **c5** (perna de cima) até o 1º pino "LED" do LCD.
 
 Os trilhos da direita da Placa A estão ligados ao 5V e ao GND do Arduino.
 
@@ -50,18 +50,18 @@ A placa fica deitada: a linha é o número de 1 a 30, contado da esquerda para a
 
 | Componente | Posição | Ligação |
 |---|---|---|
-| Botão TELA | Sobre o canal, linhas 3 a 5 | c3 ao trilho −; h5 ao **D7** |
-| Botão RESET | Sobre o canal, linhas 8 a 10 | c8 ao trilho −; h10 ao **D8** |
-| Resistor 220 Ω (LED verde) | h14 a h18 | j14 ao **D9** |
-| LED verde | Coluna j: cátodo em j17, ânodo em j18 | j17 ao trilho − de cima |
-| Resistor 220 Ω (LED vermelho) | h21 a h25 | j21 ao **D10** |
-| LED vermelho | Coluna j: cátodo em j24, ânodo em j25 | j24 ao trilho − de cima |
+| Botão TELA (`SW1_TELA`) | Sobre o canal, linhas 3 a 5 | c3 ao trilho −; h5 ao **D7** |
+| Botão RESET (`SW2_RESET`) | Sobre o canal, linhas 8 a 10 | c8 ao trilho −; h10 ao **D8** |
+| Resistor 220 Ω (`R2_LED_VERDE`) | h14 a h18 | j14 ao **D9** |
+| LED verde (`D1_LED_VERDE`) | Coluna j: cátodo em j17, ânodo em j18 | j17 ao trilho − de cima |
+| Resistor 220 Ω (`R3_LED_VERMELHO`) | h21 a h25 | j21 ao **D10** |
+| LED vermelho (`D2_LED_VERMELHO`) | Coluna j: cátodo em j24, ânodo em j25 | j24 ao trilho − de cima |
 
 Os botões usam o resistor de pull-up interno do Arduino, então não precisam de resistor externo.
 
 ## Buzzer
 
-O piezo fica fora da protoboard:
+O piezo (`PIEZO1_BUZZER`) fica fora da protoboard:
 
 | Perna | Liga em |
 |---|---|
@@ -85,7 +85,7 @@ O piezo fica fora da protoboard:
 
 ## Nomes dos componentes no Tinkercad
 
-Padrão usado: prefixo do tipo, número e função, em maiúsculas e sem acentos.
+Os nomes seguem o padrão do esquema do Tinkercad: prefixo do tipo do componente (`U`, `RPOT`, `R`, `SW`, `D`, `PIEZO`), número e função. Estão como aparecem em [`esquema.pdf`](esquema.pdf) e em [`lista_de_materiais.csv`](lista_de_materiais.csv).
 
 | Componente | Nome | Onde fica |
 |---|---|---|
@@ -93,10 +93,10 @@ Padrão usado: prefixo do tipo, número e função, em maiúsculas e sem acentos
 | LCD 16x2 | `U2_LCD` | À direita do Arduino |
 | Placa de ensaio (entradas) | `PLACA_A_ENTRADAS` | Abaixo à esquerda |
 | Placa de ensaio (painel) | `PLACA_B_PAINEL` | À direita do LCD |
-| Potenciômetro de tensão | `RPOT1_TENSAO` | Placa A, linhas 12 a 14 |
+| Potenciômetro de tensão | `RPOT1_TENSÃO` | Placa A, linhas 12 a 14 |
 | Potenciômetro de corrente | `RPOT2_CORRENTE` | Placa A, linhas 17 a 19 |
-| Potenciômetro de fator de potência | `RPOT3_FATOR_POTENCIA` | Placa A, linhas 22 a 24 |
-| Potenciômetro de contraste | `RPOT4_CONTRASTE` | Placa A, linhas 27 a 29 |
+| Potenciômetro de fator de potência | `RPOT3_FATOR_POTÊNCIA` | Placa A, linhas 22 a 24 |
+| Potenciômetro de contraste | `RPOT4_CONTRASTES` | Placa A, linhas 27 a 29 |
 | Resistor do backlight | `R1_BACKLIGHT` | Placa A, linhas 5 a 9 |
 | Resistor do LED verde | `R2_LED_VERDE` | Placa B, h14 a h18 |
 | Resistor do LED vermelho | `R3_LED_VERMELHO` | Placa B, h21 a h25 |
@@ -104,4 +104,18 @@ Padrão usado: prefixo do tipo, número e função, em maiúsculas e sem acentos
 | Botão de reset | `SW2_RESET` | Placa B, linhas 8 a 10 |
 | LED verde | `D1_LED_VERDE` | Placa B, coluna j, linhas 17 e 18 |
 | LED vermelho | `D2_LED_VERMELHO` | Placa B, coluna j, linhas 24 e 25 |
-| Buzzer piezo | `BZ1_BUZZER` | À direita da Placa B |
+| Buzzer piezo | `PIEZO1_BUZZER` | À direita da Placa B |
+
+No esquema em PDF, o piezo aparece como símbolo de alto-falante, sem o rótulo. O nome dele consta na lista de materiais.
+
+## Valores dos componentes
+
+| Componente | Na simulação | Em hardware real |
+|---|---|---|
+| Potenciômetros (os quatro) | 250 kΩ | 10 kΩ. O conversor analógico do Arduino foi projetado para fontes de até cerca de 10 kΩ de impedância |
+| Resistores (os três) | 220 Ω | 220 Ω |
+
+## Esquema e lista de materiais
+
+- [Esquema elétrico (PDF)](esquema.pdf), exportado do Tinkercad
+- [Lista de materiais (CSV)](lista_de_materiais.csv), exportada do Tinkercad

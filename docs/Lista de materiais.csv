@@ -1,0 +1,10 @@
+﻿Nome,Quantidade,Componente
+"U1_ARDUINO",1," Arduino Uno R3"
+"U2_LCD",1," LCD 16 x 2"
+"Rpot1_TENSÃO, Rpot2_CORRENTE, Rpot3_FATOR_POTÊNCIA, Rpot4_CONTRASTES",4,"250 kΩ Potenciômetro"
+"PLACA_A_ENTRADAS, PLACA_B_PAINEL",2," Placa de ensaio pequena"
+"R1_BACKLIGHT, R2_LED_VERDE, R3_LED_VERMELHO",3,"220 Ω Resistor"
+"SW1_TELA, SW2_RESET",2," Botão"
+"D1_LED_VERDE",1,"Verde LED"
+"D2_LED_VERMELHO",1,"Vermelho LED"
+"PIEZO1_BUZZER",1," Piezo"

@@ -50,7 +50,7 @@ Mais detalhes em [`docs/ligacoes.md`](docs/ligacoes.md).
 | 1 | Arduino Uno R3 |
 | 1 | LCD 16x2 (sem I2C) |
 | 2 | Placa de ensaio pequena |
-| 4 | Potenciômetro (tensão, corrente, fator de potência, contraste) |
+| 4 | Potenciômetro de 250 kΩ (tensão, corrente, fator de potência, contraste) |
 | 3 | Resistor 220 Ω (backlight do LCD e um por LED) |
 | 2 | Botão (pushbutton) |
 | 1 | LED verde |
@@ -71,6 +71,8 @@ Mais detalhes em [`docs/ligacoes.md`](docs/ligacoes.md).
 | LED verde (normal) | D9 |
 | LED vermelho (alerta) | D10 |
 | Buzzer | D6 |
+
+Em hardware real, use potenciômetros de 10 kΩ.
 
 ## Como simular
 
@@ -117,6 +119,8 @@ medidor-energia/
 │   ├── ligacoes.md
 │   ├── teoria.md
 │   ├── testes.md
+│   ├── esquema.pdf
+│   ├── lista_de_materiais.csv
 │   └── img/
 │       ├── circuito.png
 │       ├── lcd-tela1-tensao-corrente.png
@@ -133,6 +137,8 @@ medidor-energia/
 - [Teoria e fórmulas](docs/teoria.md)
 - [Ligações e montagem](docs/ligacoes.md)
 - [Casos de teste](docs/testes.md)
+- [Esquema elétrico (PDF)](docs/esquema.pdf)
+- [Lista de materiais (CSV)](docs/lista_de_materiais.csv)
 
 ## Roadmap
 
