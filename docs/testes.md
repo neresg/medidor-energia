@@ -61,16 +61,62 @@ O cabeçalho é impresso uma única vez, quando a simulação inicia. Para captu
 
 ## Resultados observados
 
-| Caso | Entrada | Resultado observado | Evidência |
-|---|---|---|---|
-| 2 | 250 V, 20 A, FP 1,00 | 5000 W e "ALERTA" no LCD | ![Alerta](img/alerta-sobrecarga.png) |
-| 3 | 250 V, 20 A, FP 0,50 | 2500 W e "OK" no LCD | ![Tela de potência](img/lcd-tela2-potencia.png) |
-| 11 a 13 | Botão TELA | As três telas aparecem em sequência: tensão e corrente, potência e FP, energia e custo | ![Tensão e corrente](img/lcd-tela1-tensao-corrente.png) ![Energia e custo](img/lcd-tela3-energia-custo.png) |
+Todos os casos abaixo foram executados na simulação do Tinkercad. Os valores de entrada ficam próximos dos planejados, porque os potenciômetros não permitem ajuste exato.
 
-Na tela de energia, 3,604 kWh correspondem a R$ 3,42 com a tarifa de R$ 0,95/kWh, como esperado.
+| Nº | Entrada | Esperado | Observado | Status |
+|---|---|---|---|---|
+| 1 | 0 V, 0 A, FP 0,50 | 0 W, LED verde aceso | 0 W, "OK", verde aceso e vermelho apagado | Aprovado |
+| 2 | 250 V, 20 A, FP 1,00 | 5000 W, alerta | 5000 W, "ALERTA" | Aprovado |
+| 3 | 250 V, 20 A, FP 0,50 | 2500 W, "OK" | 2500 W, "OK" | Aprovado |
+| 4 | ~220 V, ~15 A, FP 0,92 | ~3036 W, alerta | 3073 W, "ALERTA", vermelho aceso | Aprovado |
+| 5 | 250 V, ~12,5 A, FP 1,00 | ~3125 W, alerta | 3099 W, "ALERTA", vermelho aceso | Aprovado |
+| 6 | Alerta ativo, P em ~2900 W | Vermelho continua aceso | 2898 W, "ALERTA", vermelho aceso | Aprovado |
+| 7 | Alerta ativo, P abaixo de 2850 W | Verde acende, vermelho apaga | 2698 W, "OK", verde aceso | Aprovado |
+| 8 | Alerta desligado, P em ~2900 W | Verde continua aceso | 2898 W, "OK", verde aceso | Aprovado |
+| 9 | ~3000 W por 10 s | ~0,500 kWh e R$ 0,48 | 3001 W: 0,5019 kWh e R$ 0,48 em 10 s | Aprovado |
+| 10 | RESET na tela de energia | kWh e custo voltam a zero | De 1,361 kWh e R$ 1,29 para 0,000 kWh e R$ 0,00 | Aprovado |
+| 11 | TELA na tela 1 | Potência e FP | Tela de potência exibida | Aprovado |
+| 12 | TELA na tela 2 | Energia e custo | Tela de energia exibida | Aprovado |
+| 13 | TELA na tela 3 | Volta para tensão e corrente | Sem captura | Pendente |
 
-O Monitor Serial registra a subida e a descida do alerta: a coluna alerta passa a 1 em t = 6 s, com 4050 W, e volta a 0 em t = 12 s, quando a potência cai para 162 W. O kWh só cresce enquanto há carga:
+O som do buzzer não aparece em captura de tela. Ele foi conferido ouvindo a simulação nos casos em que o alerta está ativo.
+
+### Evidências
+
+**Casos 1 a 3: alerta e ausência de carga**
+
+| Caso 1: sem carga | Caso 2: 5000 W | Caso 3: 2500 W |
+|---|---|---|
+| <img src="img/caso-01-sem-carga.png" width="300"> | <img src="img/alerta-sobrecarga.png" width="300"> | <img src="img/lcd-tela2-potencia.png" width="300"> |
+
+**Casos 4 e 5: alerta acima do limite**
+
+| Caso 4: 3073 W | Caso 5: 3099 W |
+|---|---|
+| <img src="img/caso-04-alerta-3073w.png" width="400"> | <img src="img/caso-05-alerta-3099w.png" width="400"> |
+
+**Casos 6 a 8: histerese**
+
+Os casos 6 e 8 têm a mesma potência (2898 W) e resultados diferentes, o que depende do estado anterior do alerta.
+
+| Caso 6: alerta mantido | Caso 7: alerta desligado | Caso 8: alerta não religa |
+|---|---|---|
+| <img src="img/caso-06-histerese-mantem.png" width="300"> | <img src="img/caso-07-histerese-desliga.png" width="300"> | <img src="img/caso-08-histerese-nao-religa.png" width="300"> |
+
+**Caso 9: energia acumulada**
+
+Com 3001 W constantes, o kWh cresce cerca de 0,05 por segundo (3,001 kW × 60/3600 h). Dez segundos depois do RESET, o log marca 0,5019 kWh e R$ 0,48.
+
+![Caso 9](img/caso-09-energia-10s.png)
+
+**Caso 10: reset do consumo**
+
+| Antes do RESET | Depois do RESET |
+|---|---|
+| <img src="img/caso-10-antes-reset.png" width="300"> | <img src="img/caso-10-reset.png" width="300"> |
+
+**Registro serial**
+
+O Monitor Serial registra a subida e a descida do alerta: a coluna `alerta` passa a 1 em t = 6 s, com 4050 W, e volta a 0 em t = 12 s, quando a potência cai para 162 W. O kWh só cresce enquanto há carga.
 
 ![Monitor Serial](img/monitor-serial.png)
-
-Os demais casos (1, 4 a 10) ainda não têm captura registrada.
