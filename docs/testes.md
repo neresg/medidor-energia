@@ -69,7 +69,7 @@ O cabeçalho é impresso uma única vez, quando a simulação inicia. Para captu
 
 Na tela de energia, 3,604 kWh correspondem a R$ 3,42 com a tarifa de R$ 0,95/kWh, como esperado.
 
-O Monitor Serial confirma o alerta ativo (coluna `alerta` igual a 1) com 5000 W, e o kWh cresce a cada linha:
+O Monitor Serial registra a subida e a descida do alerta: a coluna alerta passa a 1 em t = 6 s, com 4050 W, e volta a 0 em t = 12 s, quando a potência cai para 162 W. O kWh só cresce enquanto há carga:
 
 ![Monitor Serial](img/monitor-serial.png)
 
