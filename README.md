@@ -2,7 +2,7 @@
 
 Simulação de um mini medidor inteligente de energia elétrica. O projeto lê **tensão**, **corrente** e **fator de potência**, calcula **potência**, **energia (kWh)** e **custo estimado**, mostra tudo em um LCD 16x2 e dispara **alerta visual e sonoro** em caso de sobrecarga.
 
-**Simulação no Tinkercad:** https://www.tinkercad.com/things/8ZMFmGwBbQ6-medidor-energia/editel?returnTo=https%3A%2F%2Fwww.tinkercad.com%2Fdashboard%2Fdesigns%2Fall&sharecode=vFWHd9HEb-9MpA71Rns034F9BeqFoaf5xgIx_FBSMvo
+**Simulação no Tinkercad:** https://www.tinkercad.com/things/8ZMFmGwBbQ6-medidor-energia?sharecode=IQ5-D0K6QnvdNBEhMwlwfuH9XsHcoFSFxTdTYoPLYmg
 
 ![Circuito completo](docs/img/circuito.png)
 
