@@ -77,7 +77,7 @@ Todos os casos abaixo foram executados na simulação do Tinkercad. Os valores d
 | 10 | RESET na tela de energia | kWh e custo voltam a zero | De 1,361 kWh e R$ 1,29 para 0,000 kWh e R$ 0,00 | Aprovado |
 | 11 | TELA na tela 1 | Potência e FP | Tela de potência exibida | Aprovado |
 | 12 | TELA na tela 2 | Energia e custo | Tela de energia exibida | Aprovado |
-| 13 | TELA na tela 3 | Volta para tensão e corrente | Sem captura | Pendente |
+| 13 | TELA na tela 3 | Volta para tensão e corrente | Tela de tensão e corrente exibida novamente | Aprovado |
 
 O som do buzzer não aparece em captura de tela. Ele foi conferido ouvindo a simulação nos casos em que o alerta está ativo.
 
